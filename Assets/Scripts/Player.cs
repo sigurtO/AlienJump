@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     public bool isHardCore = false;
 
+    private bool isDepletingAir = false;
+
 
 
     private void FixedUpdate()
@@ -72,11 +74,19 @@ public class Player : MonoBehaviour
     {
         if (isGrounded && moveInput.y > 0)
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            _animator.SetBool("isJumping", true);
-            isGrounded = false;
+            Jump(jumpForce);
         }
     }
+
+    public void Jump(float force)
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); // prevents stacking
+        rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+
+        _animator.SetBool("isJumping", true);
+        isGrounded = false;
+    }
+
 
     private void Start()
     {
@@ -91,16 +101,22 @@ public class Player : MonoBehaviour
 
     private IEnumerator DecreaseAirOverTime()
     {
+        if (isDepletingAir)
+            yield break;
+
+        isDepletingAir = true;
+
         while (currentAir > 0)
         {
             yield return new WaitForSeconds(1f);
             currentAir--;
             UpdateAirBarUI();
         }
+
+        isDepletingAir = false;
+
         if (currentAir <= 0)
-        {
             TakeDamage(1);
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

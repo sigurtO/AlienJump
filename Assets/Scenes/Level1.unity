@@ -367,11 +367,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1111888142111618085, guid: fb766e73e02035f45b2c0075b594f833, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.9
+      value: 2.14
       objectReference: {fileID: 0}
     - target: {fileID: 1111888142111618085, guid: fb766e73e02035f45b2c0075b594f833, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.01
+      value: -1.52
       objectReference: {fileID: 0}
     - target: {fileID: 1111888142111618085, guid: fb766e73e02035f45b2c0075b594f833, type: 3}
       propertyPath: m_LocalPosition.z
@@ -404,6 +404,10 @@ PrefabInstance:
     - target: {fileID: 1111888142111618085, guid: fb766e73e02035f45b2c0075b594f833, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3286565830117598814, guid: fb766e73e02035f45b2c0075b594f833, type: 3}
+      propertyPath: jumpForce
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3286565830117598814, guid: fb766e73e02035f45b2c0075b594f833, type: 3}
       propertyPath: uiAirBubble

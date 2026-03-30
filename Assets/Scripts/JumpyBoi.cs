@@ -17,7 +17,8 @@ public class JumpyBoi : MonoBehaviour
             Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+                Player player = rb.GetComponent<Player>();
+                player.Jump(jumpHeight);
                 animator.SetTrigger("JumpedOn");
             }
         }
