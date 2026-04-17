@@ -157,6 +157,7 @@ public class Player : MonoBehaviour
         health -= damage;
         RefillAir();
         StartCoroutine(DecreaseAirOverTime()); // Restart air depletion
+        _animator.SetTrigger("isHurt");
         UpdateAirBubbleUi();
         if (health <= -1)
         {
